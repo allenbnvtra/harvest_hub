@@ -1,0 +1,344 @@
+:root {
+  --main-bg-color: #ffffff;
+  --main-text-color: #292929;
+  --secondary-text-color: #838383;
+  --accent-color: #5300c0;
+  --accent-color-hover: #9257df;
+  --accent-hover-color: #681ccc;
+  --border-color: #e5e5e5;
+  --disabled-color: #9f98a9;
+  --rating-color: gold;
+  --placeholder-color: #ccc;
+}
+
+.product_details_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.product_details_upper {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  background-color: var(--main-bg-color);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.product_details_upper_image {
+  width: 380px;
+  max-width: 380px;
+  height: 430px;
+  overflow: hidden;
+  padding: 15px 0 15px 15px;
+}
+
+.product_details_upper_image img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.product_details_upper_title {
+  padding-top: 10px;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--main-text-color);
+}
+
+.ratings_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.ratings_container h5 {
+  color: var(--secondary-text-color);
+  font-size: 23px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.ratings span {
+  color: var(--rating-color);
+  font-size: 23px;
+}
+
+.ratings .empty-star {
+  color: var(--placeholder-color);
+}
+
+.product_details_upper_price {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--main-text-color);
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.product_details_upper_discount {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+  color: var(--secondary-text-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 19px;
+}
+
+.product_details_upper_discount span {
+  color: var(--main-text-color);
+}
+
+.variant {
+  padding-top: 25px;
+  padding-bottom: 35px;
+  width: 100%;
+}
+
+.variant > h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+}
+
+.variant_box {
+  display: flex;
+  gap: 1rem;
+}
+
+.variant_items {
+  border: 1px solid var(--border-color);
+  padding: 5px 7px;
+  margin-top: 0.9rem;
+  color: var(--main-text-color);
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.1s;
+}
+
+.variant_items:hover {
+  border-color: var(--accent-color-hover);
+  color: var(--accent-color);
+}
+
+.active_variant {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.quantity {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity > h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+}
+
+.quantity > p {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+}
+
+.quantity_count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 108px;
+  margin-top: 5px;
+}
+
+.quantity_button {
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 27px;
+  font-weight: 500;
+  padding: 0 7px;
+  user-select: none;
+  background-color: var(--accent-color);
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: var(--disabled-color);
+}
+
+.product_details_upper_button {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.product_details_upper_button button,
+.product_details_upper_button a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 20rem;
+  padding: 15px 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.product_details_upper_button button:hover,
+.product_details_upper_button a:hover {
+  background-color: var(--accent-hover-color);
+}
+
+.product_details_middle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--main-bg-color);
+  margin-bottom: 20px;
+  border-radius: 7px;
+}
+
+.product_details_middle h1 {
+  font-size: 22px;
+  font-weight: 400;
+  background-color: #f6f6f6;
+  padding: 20px;
+  color: var(--main-text-color);
+}
+
+.product_description {
+  padding: 30px;
+}
+
+.product_description > h6 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--main-text-color);
+}
+
+.product_ratings {
+  padding: 30px;
+}
+
+.rating_score {
+  font-size: 60px;
+  font-weight: 500;
+  color: var(--main-text-color);
+}
+
+.rating_score span {
+  font-size: 35px;
+  margin-left: 10px;
+  color: var(--secondary-text-color);
+}
+
+.product_rating_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product_rating_container .ratings_container .ratings span {
+  font-size: 35px;
+  margin-top: -15px;
+}
+
+.border_up_down {
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+}
+
+.bold {
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--secondary-text-color);
+  display: flex;
+  justify-content: center;
+}
+
+.upper_review {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.costumer_review {
+  display: flex;
+  flex-direction: column;
+}
+
+.costumer_review h5,
+.costumer_review h4,
+.costumer_review h6 {
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--main-text-color);
+}
+
+.costumer_review h5 {
+  margin-bottom: 10px;
+  color: var(--secondary-text-color);
+}
+
+.costumer_review h6 {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--secondary-text-color);
+}
+
+.product_customer_review {
+  color: var(--secondary-text-color);
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.related_products {
+  padding: 20px 20px;
+  margin-bottom: -1.5rem;
+}
+
+.related_products > h2 {
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--secondary-text-color);
+}
+
+.related_product_container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.related_product_container > span {
+  border: 1px solid rgb(135, 135, 135);
+  border-radius: 100%;
+  font-size: 35px;
+  cursor: pointer;
+  color: rgb(135, 135, 135);
+  transition: all 0.2s;
+}
+
+.related_product_container > span:hover {
+  border: 1px solid rgb(100, 100, 100);
+  color: rgb(100, 100, 100);
+}

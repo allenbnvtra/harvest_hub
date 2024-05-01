@@ -1,0 +1,139 @@
+.box_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+}
+
+.box_title {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f6f6f6;
+  padding: 13px 20px;
+}
+
+.box_title h5 {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.box_title a {
+  font-weight: 400;
+  font-size: 15px;
+  color: rgb(73, 31, 173);
+}
+
+.box_content {
+  padding: 15px 15px 30px 15px;
+}
+
+.left_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 788px;
+  float: left;
+}
+
+.right_container {
+  width: 388px;
+}
+
+.payment_method {
+  background-color: #fff;
+  width: 100%;
+  padding: 15px;
+}
+
+.buy_now_item {
+  display: flex;
+}
+
+.image_container {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+.image_container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.payment_option_box {
+  border: 1px solid #c5c5c5;
+  padding: 0 10px 20px 10px;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.custom-radio label {
+  display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.custom-radio label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.custom-radio input[type="radio"]:checked + label:before {
+  border-color: blue;
+}
+
+.custom-radio input[type="radio"]:checked + label:after {
+  content: "\2713";
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: blue;
+}
+
+.payment_option_box {
+  cursor: pointer;
+}
+
+.payment_option_box.checked {
+  border-color: blue;
+}
+
+.payment_option_box:hover .custom-radio label:before {
+  border-color: blue;
+}
+
+.payment_option_box.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.payment_button {
+  width: 100%;
+  border: none;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #5300c0;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.payment_button:hover {
+  background-color: #681ccc;
+}
