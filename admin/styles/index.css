@@ -1,0 +1,110 @@
+.product_container button,
+.product_container a {
+  padding: 5px 15px;
+  border-radius: 6px;
+  color: white;
+  font-size: 17px;
+}
+
+.green_button {
+  background-color: rgb(47, 164, 47);
+  transition: all 0.3s;
+}
+
+.green_button:hover {
+  background-color: rgb(64, 169, 64);
+}
+
+.blue_button {
+  background-color: rgb(47, 49, 164);
+  transition: all 0.3s;
+}
+
+.blue_button:hover {
+  background-color: rgb(64, 66, 169);
+}
+
+.red_button {
+  background-color: rgb(164, 47, 47);
+  transition: all 0.3s;
+}
+
+.red_button:hover {
+  background-color: rgb(169, 64, 64);
+}
+
+thead {
+  background-color: #dcdde8;
+  padding: 5px 5px;
+}
+
+th {
+  padding: 5px 5px;
+}
+
+tr {
+  border-bottom: 1px solid rgba(173, 168, 168, 0.433);
+}
+
+.flex_items {
+  display: flex;
+  gap: 10px;
+}
+
+.add_product_container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 700px;
+  margin-top: 2rem;
+}
+
+.add_product_container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add_product_container label {
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.add_product_container input[type="text"],
+.add_product_container select,
+.add_product_container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add_product_container input[type="file"] {
+  margin-bottom: 15px;
+}
+
+.add_product_container button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add_product_container button:hover {
+  background-color: #45a049;
+}
+
+.form_items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2px;
+}
+
+.form_items input {
+  width: 100%;
+}

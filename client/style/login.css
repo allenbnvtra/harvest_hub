@@ -1,0 +1,145 @@
+.login_container {
+  display: flex;
+  justify-content: space-between;
+  background-image: url(./../assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  object-fit: cover;
+  padding: 12rem 10rem 7rem 10rem;
+  display: flex;
+}
+
+.form_container {
+  padding: 30px 25px;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 400px;
+}
+
+.form_container button {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  background-color: #5300c0;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.login_items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.login_items input {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 2px;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  height: 2.5rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.login_items > input:focus {
+  outline: none;
+}
+
+.login_items label {
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: #565656;
+}
+
+/* Sign up */
+
+.signup_container {
+  padding: 30px 25px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 550px;
+}
+
+.signup_container button {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  background-color: #5300c0;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.login_container_s {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./../assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  object-fit: cover;
+  padding: 12rem 10rem 7rem 10rem;
+  display: flex;
+}
+
+.seller_login_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url(https://live.staticflickr.com/8486/8184576966_ca1997f0d6_b.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  object-fit: cover;
+  padding: 13rem 5rem 7rem 5rem;
+  display: flex;
+}
+
+.seller_login_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity here */
+}
+
+.seller_signup_container {
+  padding: 30px 25px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 550px;
+}
+
+.seller_signup_container button {
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  background-color: #5300c0;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}

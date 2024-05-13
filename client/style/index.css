@@ -242,3 +242,43 @@ header {
 .main-container {
   display: flex;
 }
+
+.profile-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* .dropdown-menu ul li {
+  padding: 5px;
+} */
+
+.dropdown-menu ul li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 15px 70px 15px 15px;
+}
+
+.dropdown-menu ul li a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}

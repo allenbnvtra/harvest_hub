@@ -1,0 +1,31 @@
+.image_container {
+  width: 50rem;
+  max-width: 50rem;
+  height: 400px;
+  overflow: hidden;
+}
+
+.image_container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  color: rgb(45, 45, 45);
+}
+
+.button {
+  border: none;
+  margin-top: 1rem;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #5300c0;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #681ccc;
+}
