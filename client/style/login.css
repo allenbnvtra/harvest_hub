@@ -143,3 +143,12 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+
+@media (max-width: 1000px) {
+  .seller_login_container {
+    display: flex;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

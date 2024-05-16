@@ -173,3 +173,9 @@ input[type="number"] {
 .filter_ratings .empty-star {
   color: #ccc;
 }
+
+@media (max-width: 879px) {
+  .filter {
+    display: none;
+  }
+}

@@ -125,7 +125,7 @@ if(isset($_SESSION['customerUsername'])){
             </div>
         </header>
 
-        <div style="padding: 7rem 6rem; display: flex; gap: 1rem; justify-content: center;">
+        <div class="buy_container">
             <div id="editModal" class="modal">
                 <div class="modal-content">
                     <div style="display: flex; justify-content: space-between;">

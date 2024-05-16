@@ -43,7 +43,7 @@
             $_SESSION['customerUsername'] = $username;
             if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
                 header("Location: " . $_SERVER['HTTP_REFERER']);
-                exit();
+                exit(0);
             }
         } else {
             $_SESSION['error'] = "Incorrect username or password.";

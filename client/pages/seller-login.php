@@ -34,7 +34,7 @@ if (isset($_SESSION['sellerUsername'])) {
 
         <div class="seller_login_container">
 
-            <div style="display: flex; z-index: 1000; flex-direction: column; justify-content: center; color: #fff;">
+            <div class="hero">
                 <h1 style="font-size: 60px; font-weight: 600;">Harvest hub Seller's center</h1>
                 <p style="font-size: 18px; font-weight: 400;">Be a part of our community.</p>
 

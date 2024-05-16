@@ -60,6 +60,12 @@ if (!isset($_SESSION['sellerUsername'])) {
                         </a>
                     </li>
                     <li class="px-3 py-2 rounded-md">
+                        <a class="flex items-center gap-2 w-full h-full" href="/project/admin/orders.php">
+                            <i class="fa-solid fa-users text-md"></i>
+                            <p>Orders</p>
+                        </a>
+                    </li>
+                    <li class="px-3 py-2 rounded-md">
                         <a class="flex items-center gap-2 w-full h-full" href="/project/client">
                             <i class="fa-solid fa-shop text-md"></i>
                             <p>Marketplace</p>
@@ -69,40 +75,8 @@ if (!isset($_SESSION['sellerUsername'])) {
             </div>
 
             <div class="flex flex-col gap-2">
-                <h1 class="text-sm font-semibold text-white text-sm">Orders</h1>
-                <ul class="text-white text-md flex flex-col">
-                    <li class="px-3 py-2 rounded-md">
-                        <a class="flex items-center gap-2 w-full h-full" href="#">
-                            <i class="fa-solid fa-money-bills text-md"></i>
-                            <p>Pending Orders</p>
-                        </a>
-                    </li>
-                    <li class="px-3 py-2 rounded-md">
-                        <a class="flex items-center gap-2 w-full h-full" href="#">
-                            <i class="fa-solid fa-file-invoice text-md"></i>
-                            <p>Success Orders</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col gap-2">
                 <h1 class="text-sm font-semibold text-white text-sm">Settings</h1>
                 <ul class="text-white text-md flex flex-col">
-                    <li class="px-3 py-2 rounded-md">
-                        <a class="flex items-center gap-2 w-full h-full" href="#">
-                            <i class="fa-solid fa-clock-rotate-left text-md"></i>
-                            <p>Activity Logs</p>
-                        </a>
-                    </li>
-
-                    <li class="px-3 py-2 rounded-md">
-                        <a class="flex items-center gap-2 w-full h-full" href="#">
-                            <i class="fa-solid fa-box-archive text-md"></i>
-                            <p>Archived</p>
-                        </a>
-                    </li>
-
                     <li class="px-3 py-2 rounded-md">
                         <a class="flex items-center gap-2 w-full h-full" href="/project/logout.php">
                             <i class="fa-solid fa-right-from-bracket text-md"></i>

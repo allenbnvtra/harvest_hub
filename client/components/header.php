@@ -5,9 +5,6 @@
                 <ul class="upper-part-nav">
                     <li><a href="/project/client/pages/seller-login.php"><span
                                 class="material-symbols-outlined">storefront</span>Seller Center</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined">local_shipping</span>Track my
-                            order</a>
-                    </li>
                     <li><a href="#"><span class="material-symbols-outlined">
                                 help
                             </span>About us</a>
@@ -21,20 +18,21 @@
                 <h1>Harverst</h1>
                 <span>hub</span>
             </a>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="search">
+
+            <form action="/project/client/" method="POST" class="search">
                 <input placeholder="Search..." type="search" name="search" id="search">
                 <button type="submit"><span class="material-symbols-outlined">search</span></button>
             </form>
 
             <?php
-            session_start();
-
             if(isset($_SESSION['customerUsername'])){
             ?>
-            <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
-                <span style="font-size: 35px; font-weight: 500; cursor: pointer;" class="material-symbols-outlined">
-                    shopping_cart
-                </span>
+            <div class="logged-in">
+                <a href="/project/client/pages/cart.php">
+                    <span style="font-size: 35px; font-weight: 500; cursor: pointer;" class="material-symbols-outlined">
+                        shopping_cart
+                    </span>
+                </a>
                 <div class="profile-container">
                     <span style="font-size: 35px; font-weight: 500; cursor: pointer;"
                         class="material-symbols-outlined profile-icon">
@@ -42,10 +40,12 @@
                     </span>
                     <div class="dropdown-menu">
                         <ul>
-                            <li><a style="display: flex; gap: 5px;" href="#"><span class="material-symbols-outlined">
+                            <li><a style="display: flex; gap: 5px;" href="/project/client/pages/profile.php"><span
+                                        class="material-symbols-outlined">
                                         person
                                     </span>Profile</a></li>
-                            <li><a style="display: flex; gap: 5px;" href="#"><span class="material-symbols-outlined">
+                            <li><a style="display: flex; gap: 5px;" href="/project/client/pages/orders.php"><span
+                                        class="material-symbols-outlined">
                                         shopping_bag
                                     </span>Orders</a></li>
                             <li><a style="display: flex; gap: 5px; color: red; font-weight: 600;"

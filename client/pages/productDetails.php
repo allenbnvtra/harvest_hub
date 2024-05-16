@@ -1,25 +1,24 @@
 <?php
+session_start();
+
 include_once "./../../config/dbCon.php";
 
 if (isset($_GET['product_id'])) {
-    $product_id = $_GET['product_id'];
+$product_id = $_GET['product_id'];
 
-    $sql_product = "SELECT * FROM products WHERE product_id = $product_id";
-    $result_product = mysqli_query($conn, $sql_product);
+$sql_product = "SELECT * FROM products WHERE product_id = $product_id";
+$result_product = mysqli_query($conn, $sql_product);
 
-    if ($result_product && mysqli_num_rows($result_product) > 0) {
-        // Fetch product details
-        $product = mysqli_fetch_assoc($result_product);
+if ($result_product && mysqli_num_rows($result_product) > 0) {
+$product = mysqli_fetch_assoc($result_product);
 
-        // Query to calculate average rating for the product
-        $sql_rating = "SELECT AVG(rating) AS avg_rating FROM Ratings WHERE product_id = $product_id";
-        $result_rating = mysqli_query($conn, $sql_rating);
-        $avg_rating_row = mysqli_fetch_assoc($result_rating);
-        $avg_rating = round($avg_rating_row['avg_rating']);
 
-        mysqli_free_result($result_product);
-      
-        $less_price = round((1 - ($product['previous_price'] / $product['price'])) * 100);
+mysqli_free_result($result_product);
+
+$less_price = round((1 - ($product['previous_price'] / $product['price'])) * 100);
+
+ $sql_reviews = "SELECT r.review_text   , r.created_at, c.customerName FROM reviews r JOIN customers c ON r.customer_id = c.customerID WHERE r.product_id = $product_id";
+ $result_reviews = mysqli_query($conn, $sql_reviews);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +35,8 @@ if (isset($_GET['product_id'])) {
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+
+
 </head>
 
 <body>
@@ -56,7 +57,7 @@ if (isset($_GET['product_id'])) {
                         <div>
                             <h5 class="product_details_upper_title"><?php echo $product['product_name']; ?></h5>
 
-                            <div style="font-size: 24px;" class="ratings_container">
+                            <!-- <div style="font-size: 24px;" class="ratings_container">
                                 <div class="ratings">
                                     <?php
                                     for ($i = 0; $i < 5; $i++) {
@@ -69,7 +70,7 @@ if (isset($_GET['product_id'])) {
                                     ?>
                                 </div>
                                 <h5>(<?php echo $avg_rating; ?>)</h5>
-                            </div>
+                            </div> -->
 
                             <div>
                                 <h5 class="product_details_upper_price">₱<?php echo $product['price']; ?></h5>
@@ -97,7 +98,11 @@ if (isset($_GET['product_id'])) {
                             </div>
                             <div class="product_details_upper_button">
                                 <a href="#" id="buy_now_link">Buy now</a>
-                                <button>Add to cart</button>
+                                <form method="post" action="./../function/addCart.php">
+                                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                    <input type="hidden" name="quantity" id="quantity_input" value="1">
+                                    <button type="add_to_cart" name="add_to_cart">Add to cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -111,7 +116,6 @@ if (isset($_GET['product_id'])) {
                       $seller_name = mysqli_query($conn, $sql_sname);
 
                       if ($seller_name && mysqli_num_rows($seller_name) > 0) {
-                        // Fetch product details
                         $seller = mysqli_fetch_assoc($seller_name);
                 
                     echo $seller['store_name']; 
@@ -125,104 +129,49 @@ if (isset($_GET['product_id'])) {
                 </div>
 
                 <div class="product_details_middle">
-                    <h1>Ratings & Reviews of <?php echo $product['product_name']; ?> -
+                    <h1>Reviews of <?php echo $product['product_name']; ?> -
                         <?php echo $seller['store_name']; ?></h1>
 
                     <div class="product_ratings">
                         <div>
-                            <div class="product_rating_container">
-                                <div class="rating_score"><?php echo $avg_rating; ?><span>/5</span></div>
-                                <div>
-                                    <div class="ratings_container">
-                                        <div class="ratings">
-                                            <?php
-                                    for ($i = 0; $i < 5; $i++) {
-                                        if ($i < $avg_rating) {
-                                            echo '<span class="filled-star">&#9733;</span>';
-                                        } else {
-                                            echo '<span class="empty-star">&#9733;</span>';
-                                        }
-                                    }
-                                    ?>
-                                        </div>
-                                        <h5>(<?php echo $avg_rating; ?>)</h5>
-                                    </div>
-                                </div>
-                            </div>
+
 
                             <div>
                                 <div class="border_up_down bold">
                                     Product Reviews
                                 </div>
 
+                                <?php
+                                if ($result_reviews && mysqli_num_rows($result_reviews) > 0) {
+                                    while ($review = mysqli_fetch_assoc($result_reviews)) {
+                                        ?>
                                 <div class="product_customer_review">
                                     <div class="upper_review">
                                         <div class="ratings_container">
-                                            <div class="ratings">
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="empty-star">&#9733;</span>
-                                            </div>
                                         </div>
-                                        <h5>2 weeks ago</h5>
+                                        <h5><?php echo date('F j, Y', strtotime($review['created_at'])); ?></h5>
                                     </div>
 
                                     <div class="costumer_review">
-                                        <h5>Harold V.</h5>
-                                        <h4>received all the seeds, but paanu malalaman kung Alin o anung seeds to Wala
-                                            man lang label.</h4>
-                                        <h6>Variant: <span>100pcs /box</span></h6>
+                                        <?php
+                                        $name_parts = explode(' ', $review['customerName']);
+                                        $first_name = $name_parts[0];
+                                        $last_initial = isset($name_parts[1]) ? substr($name_parts[1], 0, 1) . '.' : '';
+
+                                        $formatted_name = $first_name . ' ' . $last_initial;
+                                        ?>
+                                        <h5><?php echo $formatted_name; ?></h5>
+                                        <h4><?php echo $review['review_text']; ?></h4>
                                     </div>
+
                                 </div>
-
-                                <div class="product_customer_review">
-                                    <div class="upper_review">
-                                        <div class="ratings_container">
-                                            <div class="ratings">
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                            </div>
-                                        </div>
-                                        <h5>2 weeks ago</h5>
-                                    </div>
-
-                                    <div class="costumer_review">
-                                        <h5>Kim Carlo J.</h5>
-                                        <h4>Mabilis na deliver yung order ko and sana lagyan na nila ng pangalan yung
-                                            mga seeds na binili ko para hindi na ako magtanong paisa isa.
-                                            Thank you.</h4>
-                                        <h6>Variant: <span>100pcs /box</span></h6>
-                                    </div>
-                                </div>
-
-                                <div class="product_customer_review">
-                                    <div class="upper_review">
-                                        <div class="ratings_container">
-                                            <div class="ratings">
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                                <span class="filled-star">&#9733;</span>
-                                            </div>
-                                        </div>
-                                        <h5>1 month ago</h5>
-                                    </div>
-
-                                    <div class="costumer_review">
-                                        <h5>Allen B.</h5>
-                                        <h4>Nag start lang ako 2 day ago. Sinunod ko yung instructions na kasama. Wala
-                                            kong ibang tray kundi egg tray lang at 1st time ko lang kaya eto na muna
-                                            ginamit ko. Sa ibang seeds nag experiment ako at na-amazed ako sa results.
-                                            Thanks po sa free labanos seed, nag sprout na sya</h4>
-                                        <h6>Variant: <span>100pcs /box</span></h6>
-                                    </div>
-                                </div>
+                                <?php
+                                    }
+                                    mysqli_free_result($result_reviews);
+                                } else {
+                                    echo "<div style='height: 5rem; align-items: center; display: flex; justify-content: center;'>No reviews found.</div>";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -237,7 +186,7 @@ if (isset($_GET['product_id'])) {
                         }
                         include_once "./../../config/dbCon.php";
 
-                        $sql = "SELECT p.*, AVG(r.rating) AS avg_rating FROM products p LEFT JOIN Ratings r ON p.product_id = r.product_id GROUP BY p.product_id";
+                        $sql = "SELECT * FROM products";
                         $result = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -261,21 +210,6 @@ if (isset($_GET['product_id'])) {
                                     </span>
                                     <?php echo $row['location']; ?>
                                 </h5>
-                                <div class="ratings_container">
-                                    <div class="ratings">
-                                        <?php
-                                        $avg_rating = round($row['avg_rating']);
-                                        for ($i = 0; $i < 5; $i++) {
-                                        if ($i < $avg_rating) {
-                                            echo '<span class="filled-star">&#9733;</span>';
-                                        } else {
-                                            echo '<span class="empty-star">&#9733;</span>';
-                                        }
-                                        }
-                                        ?>
-                                    </div>
-                                    <h5>(<?php echo $avg_rating; ?>)</h5>
-                                </div>
                             </div>
                         </a>
                         <?php
@@ -300,38 +234,9 @@ if (isset($_GET['product_id'])) {
         const addButton = document.querySelector('.add');
         const minusButton = document.querySelector('.minus');
         const buyNowLink = document.getElementById('buy_now_link');
+        const quantityInput = document.getElementById('quantity_input');
 
         let count = parseInt(countElement.textContent);
-
-        addButton.addEventListener('click', function() {
-            if (count < 10) {
-                count++;
-                countElement.textContent = count;
-                minusButton.removeAttribute('disabled');
-                minusButton.classList.remove('disabled');
-            }
-            if (count > 9) {
-                addButton.setAttribute('disabled', 'disabled');
-                addButton.classList.add('disabled');
-            }
-
-            updateBuyNowLink(count);
-        });
-
-        minusButton.addEventListener('click', function() {
-            if (count > 1) {
-                count--;
-                countElement.textContent = count;
-                addButton.removeAttribute('disabled');
-                addButton.classList.remove('disabled');
-            }
-            if (count < 2) {
-                minusButton.setAttribute('disabled', 'disabled');
-                minusButton.classList.add('disabled');
-            }
-
-            updateBuyNowLink(count);
-        });
 
         function updateBuyNowLink(quantity) {
             var url = '/project/client/pages/buyNow.php';
@@ -353,12 +258,49 @@ if (isset($_GET['product_id'])) {
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
-        buyNowLink.addEventListener('click', function() {
+        addButton.addEventListener('click', function() {
+            if (count < 10) {
+                count++;
+                countElement.textContent = count;
+                minusButton.removeAttribute('disabled');
+                minusButton.classList.remove('disabled');
+            }
+            if (count >= 10) {
+                addButton.setAttribute('disabled', 'disabled');
+                addButton.classList.add('disabled');
+            }
+            updateBuyNowLink(count);
+            updateQuantityInput(count);
+        });
+
+        minusButton.addEventListener('click', function() {
+            if (count > 1) {
+                count--;
+                countElement.textContent = count;
+                addButton.removeAttribute('disabled');
+                addButton.classList.remove('disabled');
+            }
+            if (count <= 1) {
+                minusButton.setAttribute('disabled', 'disabled');
+                minusButton.classList.add('disabled');
+            }
+            updateBuyNowLink(count);
+            updateQuantityInput(count);
+        });
+
+        function updateQuantityInput(quantity) {
+            quantityInput.value = quantity;
+        }
+
+        buyNowLink.addEventListener('click', function(event) {
+            event.preventDefault();
             if (count === 1) {
                 updateBuyNowLink(1);
             }
             window.location.href = buyNowLink.href;
         });
+
+        updateBuyNowLink(count);
     });
 
     const variantItems = document.querySelectorAll('.variant_items');
@@ -368,11 +310,11 @@ if (isset($_GET['product_id'])) {
             variantItems.forEach(item => {
                 item.classList.remove('active_variant');
             });
-
             this.classList.add('active_variant');
         });
     });
     </script>
+
 
 
 

@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search"])) {
     $search_query = $_POST["search"];
 }
 
-$sql = "SELECT p.*, AVG(r.rating) AS avg_rating FROM products p LEFT JOIN Ratings r ON p.product_id = r.product_id";
+$sql = "SELECT p.* FROM products p";
 if (!empty($search_query)) {
     $sql .= " WHERE p.product_name LIKE '%$search_query%'";
 }
@@ -35,21 +35,6 @@ if (mysqli_num_rows($result) > 0) {
             </span>
             <?php echo $row['location']; ?>
         </h5>
-        <div class="ratings_container">
-            <div class="ratings">
-                <?php
-                        $avg_rating = round($row['avg_rating']);
-                        for ($i = 0; $i < 5; $i++) {
-                            if ($i < $avg_rating) {
-                                echo '<span class="filled-star">&#9733;</span>';
-                            } else {
-                                echo '<span class="empty-star">&#9733;</span>';
-                            }
-                        }
-                        ?>
-            </div>
-            <h5>(<?php echo $avg_rating; ?>)</h5>
-        </div>
     </div>
 </a>
 <?php

@@ -34,7 +34,7 @@ if (isset($_SESSION['customerUsername'])) {
         </header>
 
         <div class="login_container">
-            <div style="display: flex; flex-direction: column; justify-content: center; color: #fff;">
+            <div class="hero">
                 <h1 style="font-size: 80px; font-weight: 600;">Harvest hub</h1>
                 <p style="font-size: 20px; font-weight: 400;">We deliver your farm products in fastest and most
                     reliable

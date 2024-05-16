@@ -205,3 +205,24 @@ textarea {
 #saveChangesBtn:hover {
   background-color: #45a049;
 }
+
+.buy_container {
+  padding: 7rem 6rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 1190px) {
+  .buy_container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .buy_container {
+    display: flex;
+    flex-direction: column;
+  }
+}
