@@ -1,27 +1,39 @@
 <?php
 include_once "./../config/dbCon.php";
 
-$search_query = "";
+$searchQuery = isset($_POST["search"]) ? $_POST["search"] : '';
+$minPrice = isset($_GET['min']) ? $_GET['min'] : '';
+$maxPrice = isset($_GET['max']) ? $_GET['max'] : '';
+$shippedFrom = isset($_GET['shipped']) ? $_GET['shipped'] : '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["search"])) {
-    $search_query = $_POST["search"];
+$whereClause = '';
+
+if (!empty($searchQuery)) {
+    $whereClause .= " AND p.product_name LIKE '%$searchQuery%'";
 }
 
-$sql = "SELECT p.* FROM products p";
-if (!empty($search_query)) {
-    $sql .= " WHERE p.product_name LIKE '%$search_query%'";
+if (!empty($minPrice) && !empty($maxPrice)) {
+    $whereClause .= " AND p.price BETWEEN $minPrice AND $maxPrice";
+} else if (!empty($minPrice)) {
+    $whereClause .= " AND p.price >= $minPrice";
+} else if (!empty($maxPrice)) {
+    $whereClause .= " AND p.price <= $maxPrice";
 }
-$sql .= " GROUP BY p.product_id";
+
+if (!empty($shippedFrom)) {
+    $whereClause .= " AND p.location LIKE '%$shippedFrom%'";
+}
+
+$sql = "SELECT p.* FROM products p WHERE 1=1 $whereClause GROUP BY p.product_id";
 
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $image_url = "../admin/function/" . $row['image_url'];
-        ?>
+?>
 <a href="/project/client/pages/productDetails.php?product_id=<?php echo $row['product_id']; ?>" class="product-card">
     <div class="image_container">
-        <!-- Use the constructed image URL -->
         <img src="<?php echo $image_url; ?>" alt="">
     </div>
     <div class="product_details">
